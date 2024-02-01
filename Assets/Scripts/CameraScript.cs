@@ -19,7 +19,7 @@ public class CameraScript : MonoBehaviour
     
     void Start()
     {
-        // Hide your cursor and center it so shit doesn't break. Standard thing.
+        // Hide your cursor and center it so everything doesn't break. Standard thing.
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -39,16 +39,20 @@ public class CameraScript : MonoBehaviour
         // Quaternions suck, send tweet.
         var targetRotation = Quaternion.Euler(-rotateX, rotateY, 0);
 
-        // Ternary operator to 
+        // Ternary operator to determine if we should zoom in a bit for  ADS.
         transform.position =  Player.position - targetRotation * (ADSActive ? ADSOffset : cameraOffset);
         transform.rotation = targetRotation;
     }
+
+    // A public function to get the camera's RELEVANT rotation information for movement. I'm told there's something called a property in C# that I could try using but this works fine for now.
     public Quaternion GetRotation()
     {
         return Quaternion.Euler(0, rotateY, 0);
     }
-    public void SetADS(bool yee)
+
+    // I said my comments were okay. variable names? look it does the job.
+    public void SetADS(bool Jimmy)
     {
-        ADSActive = yee;
+        ADSActive = Jimmy;
     }
 }
