@@ -47,12 +47,22 @@ public class PlayerMove : MonoBehaviour
             // determines whether it *can* multiply at all. That was annoying, but makes sense I guess.
             var moveDir = cam.GetRotation() * tempInput;
 
-            // Ternary Operator to modify move speed based on Sprint Status, giving ADS precedent
+            // Modify speed based on Sprint Status unless we are using ADS
             moveDir = SprintVal > 0 && ADSVal == 0 ? moveDir * sprintMod : moveDir;
-            // Ternary Operator for ADS, slowing us down, even if we had sprint enabled.
+            // Modify speed for ADS, slowing us down even if we had sprint enabled.
             moveDir = ADSVal > 0 ? moveDir * adsMod : moveDir;
 
-            transform.position += moveDir * moveSpeed * Time.deltaTime; // TODO: Change to Force-Based movement.
+            // We want to basically kneecap our inertia if we're trying to move in another direction
+            if (Vector3.Dot(moveDir, rb.velocity) < 0)
+            {
+                moveDir *= 2;
+            }
+            rb.AddForce(moveDir * moveSpeed);
+        } // Now if we're not moving and we're on the ground we optimally want to completely stop our movement.
+          // Barring that, we want to make the slow down feel natural.
+        else if (isGrounded && rb.velocity.magnitude > 1)
+        {
+            rb.AddForce(rb.velocity * rb.velocity.magnitude * -1);
         }
 
         // If we're grounded and I jump, jump.
