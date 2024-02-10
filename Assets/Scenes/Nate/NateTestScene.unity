@@ -2168,22 +2168,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerModel
       objectReference: {fileID: 0}
-    - target: {fileID: 8986860231643318610, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
-      propertyPath: JumpPower
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8986860231643318610, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
-      propertyPath: SprintMod
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8986860231643318610, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
-      propertyPath: isGrounded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8986860231643318610, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
-      propertyPath: SpeedModifier
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
