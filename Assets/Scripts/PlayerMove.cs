@@ -34,6 +34,11 @@ public class PlayerMove : MonoBehaviour
         float ADSVal = Input.GetAxis("ADS");
         float SprintVal = Input.GetAxis("Sprint");
         float JumpVal = Input.GetAxis("Jump");
+        // This happens early so the shotgun script can work without overriding
+        if (Input.GetAxis("AltFire") > 0)
+        {
+            isGrounded = false;
+        }
 
         // Uses a ternary operator to check if we are aiming down sights.
         // I could just put the Input.GetAxis in here and save space but it's not crucial yet.
@@ -63,11 +68,21 @@ public class PlayerMove : MonoBehaviour
             // Now that everything has been calculated, we should apply the force...
             rb.AddForce(moveDir * SpeedModifier);
 
-            // Now, we need to actually check and make sure we aren't going too fast, provided we're grounded of course.
-            if (isGrounded && rb.velocity.magnitude > TopSpeed)
+            var calcTop = TopSpeed;
+            if (ADSVal > 0)
             {
-
+                calcTop =  TopSpeed * AdsMod;
             }
+            else if (SprintVal > 0)
+            {
+                calcTop = TopSpeed * SprintMod;
+            }
+            // Now, we need to actually check and make sure we aren't going too fast, provided we're grounded of course.
+            if (isGrounded && rb.velocity.magnitude > calcTop)
+            {
+                rb.velocity = rb.velocity.normalized * calcTop;
+            }
+            Debug.Log(rb.velocity.magnitude);
         } 
         // Now if we're not moving and we're on the ground we optimally want to completely stop our movement.
         // Barring that, we want to make the slow down feel natural.
