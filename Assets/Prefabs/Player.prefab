@@ -466,11 +466,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ffd529643ef8c429ac93161d868f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  sprintMod: 1.5
-  adsMod: 0.6
-  jumpPower: 5
-  isGrounded: 0
+  SpeedModifier: 20
+  TopSpeed: 5
+  SprintMod: 1.5
+  AdsMod: 0.8
+  JumpPower: 10
+  isGrounded: 1
 --- !u!54 &8407894649107962545
 Rigidbody:
   m_ObjectHideFlags: 0

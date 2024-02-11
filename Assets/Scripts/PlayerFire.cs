@@ -7,6 +7,7 @@ public class PlayerFire : MonoBehaviour
     // RayCastPoint, shorthanded to RCP.
     [SerializeField] GameObject RCP;
     [SerializeField] Rigidbody playerRB;
+
     CameraScript cam;
 
     // Actual Gun Stuff
