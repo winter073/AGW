@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     // I should probably start adding some stuff like RigidBody components and animators. Those will go here.
     Rigidbody rb;
     [SerializeField] bool isGrounded = true;
+    [SerializeField] bool RocketJumping = false;
 
 
     // Start is called before the first frame update, and connects to our camera object.
@@ -37,9 +38,8 @@ public class PlayerMove : MonoBehaviour
         // This happens early so the shotgun script can work without overriding
         if (Input.GetAxis("AltFire") > 0)
         {
-            isGrounded = false;
+            RocketJumping = true;
         }
-
         // Uses a ternary operator to check if we are aiming down sights.
         // I could just put the Input.GetAxis in here and save space but it's not crucial yet.
         cam.SetADS(ADSVal > 0 ? true : false);
@@ -77,10 +77,12 @@ public class PlayerMove : MonoBehaviour
             {
                 calcTop = TopSpeed * SprintMod;
             }
-            // Now, we need to actually check and make sure we aren't going too fast, provided we're grounded of course.
-            if (isGrounded && rb.velocity.magnitude > calcTop)
+            // Now, we need to actually check and make sure we aren't going too fast, provided we're not rocket jumping of course.
+            // But jumping should NOT affect our X and Z movement.
+            var tempVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            if (!RocketJumping && rb.velocity.magnitude > calcTop)
             {
-                rb.velocity = rb.velocity.normalized * calcTop;
+                rb.velocity = new Vector3(tempVel.x, rb.velocity.y, tempVel.z).normalized * calcTop;
             }
             Debug.Log(rb.velocity.magnitude);
         } 
@@ -106,5 +108,6 @@ public class PlayerMove : MonoBehaviour
     private void OnCollisionEnter(Collision thing)
     {
         isGrounded = true;
+        RocketJumping= false;
     }
 }
