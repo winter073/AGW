@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 227859535}
   - component: {fileID: 227859534}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 264779494}
   - component: {fileID: 264779493}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: How To Play (Delete Me Later)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2226,7 +2226,8 @@ MonoBehaviour:
 
     Sussy
 
-    Mother'
+    Mother
+    3'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2554,6 +2555,7 @@ GameObject:
   - component: {fileID: 1643921573}
   - component: {fileID: 1643921572}
   - component: {fileID: 1643921571}
+  - component: {fileID: 1643921574}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2611,6 +2613,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1643921574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643921570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37d3348a0ad90f4ab3b7d8499c6e4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 227859534}
 --- !u!1 &1654208878
 GameObject:
   m_ObjectHideFlags: 0
