@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using UnityEngine;
 using TMPro;
 
 public class Leaderboard : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI names, times;
-
-    List<string> scores = new List<string>();
-    List<string> playerNames = new List<string>();
 
     SaveData save;
     string savePath;
@@ -20,8 +18,11 @@ public class Leaderboard : MonoBehaviour
         // This needs to be right here or Unity will have a conniption.
         // It's actually because where the persistentDataPath is varies on every machine.
         savePath = Application.persistentDataPath + "/Save.json";
-        save.names = new string[10] {"", "", "", "", "", "", "", "", "", ""};
-        save.times = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+        save.runs = new List<Run>();
+        LoadMyGame();
+        save.runs.Sort();
+        
+        
     }
 
     // Update is called once per frame
@@ -30,14 +31,14 @@ public class Leaderboard : MonoBehaviour
         
     }
 
-    void SaveMyGame(SaveData info)
+    public void SaveMyGame(SaveData info)
     {
         // Convert our data into something usable by the JSON format.
         string tempData = JsonUtility.ToJson(info);
         File.WriteAllText(savePath, tempData);
     }
 
-    void LoadMyGame()
+    public void LoadMyGame()
     {
         // If a save file even exists, we should pull from it since that will have our scores in it. Hopefully. Soon. Working on that.
         if (File.Exists(savePath))
@@ -46,10 +47,40 @@ public class Leaderboard : MonoBehaviour
             save = JsonUtility.FromJson<SaveData>(tempData);
         }
     }
+    public void UpdateLeaderBoard()
+    {
+
+    }
 }
 
 public class SaveData
 {
-    public string[] names;
-    public string[] times;
+    public List<Run> runs;
+}
+[System.Serializable]
+public class Run : IComparable
+{
+    string Name;
+    float time;
+    
+    public int CompareTo (object obj)
+    {
+        var a = this;
+        var b = obj as Run;
+        if (a.time < b.time)
+        {
+            return -1;
+        }
+        if (a.time > b.time)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+    public string getConvTime()
+    {
+        TimeSpan ts = TimeSpan.FromMilliseconds(time);
+        return String.Format("{0}:{1}.{2}", ts.Minutes, ts.Seconds.ToString("00"), ts.Milliseconds.ToString("000"));
+    }
 }
