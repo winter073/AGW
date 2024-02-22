@@ -31541,6 +31541,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ffd529643ef8c429ac93161d868f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpeedModifier: 5
+  TopSpeed: 5
+  SprintMod: 1.2
+  AdsMod: 0.8
+  JumpPower: 0
+  isGrounded: 1
+  RocketJumping: 0
 --- !u!136 &661495153
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -31623,7 +31630,7 @@ Transform:
   m_GameObject: {fileID: 661495150}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.95, y: 1.12, z: 30.480001}
+  m_LocalPosition: {x: -6.39, y: 1.12, z: 30.480001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47682,6 +47689,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b74b4ee6774c6e47a20da6f52a2e0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
+  ADSOffset: {x: 0, y: 0, z: 0}
+  mouseSpeed: 3
+  mouseMin: 0
+  mouseMax: 0
 --- !u!81 &967451590
 AudioListener:
   m_ObjectHideFlags: 0
@@ -48119,6 +48132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4dfbaec570ca3944b74b4a34f1084bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RCP: {fileID: 0}
+  playerRB: {fileID: 0}
+  ShotgunCooldown: 5
+  ShotgunForce: 10
+  GunCooldown: 0.6
+  GunRange: 10
 --- !u!65 &1000141201
 BoxCollider:
   m_ObjectHideFlags: 0
