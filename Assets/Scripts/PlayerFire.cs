@@ -41,12 +41,12 @@ public class PlayerFire : MonoBehaviour
         {
             gunTimer = 0;
             Vector3 fire = RCP.transform.forward;
-            if (Physics.Raycast(RCP.transform.position, fire, out RaycastHit hit))
+            if (Physics.Raycast(RCP.transform.position, fire, out RaycastHit hit, 50f))
             {
                 if (hit.collider.gameObject.CompareTag("Target"))
                 {
                     Debug.Log("Thing hit is a target.");
-                    // TO DO: Call a public function on the target with the hit position telling it to function and calculate points
+                    hit.collider.gameObject.GetComponent<Target>().BeenHit();
                 }
                 Debug.Log("Thing hit at: " + hit.point);
             }

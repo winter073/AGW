@@ -9,13 +9,19 @@ public class GameManager : MonoBehaviour
     float elapsedTime = 0.0f;
     bool RunBegan = false;
     int RemainingTargets;
-    int TotalTargets;
+    float AverageAcc; // Accounts for all shots fired
+    int ShotsFired; // How many total shots
+    int HitAcc; // How accurate the shots that hit were
+    int ShotsHit; // How many shots actually hit the target
+    public GameObject[] Targets;
     TimeSpan ts;
-    [SerializeField] TextMeshProUGUI timer; 
+    [SerializeField] TextMeshProUGUI timer, targetCount;
     // Start is called before the first frame update
     void Start()
     {
-        TotalTargets = GameObject.FindGameObjectsWithTag("Target").Length;
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Target");
+        Targets = temp;
+        ChangeGameState(true);
     }
 
     // Update is called once per frame
@@ -39,10 +45,31 @@ public class GameManager : MonoBehaviour
         // But if a run BEGINS, we need to enable our timer object and reset the value of it... Probably not in that order.
         else
         {
-            RemainingTargets = TotalTargets;
+            foreach (GameObject target in Targets)
+            {
+                target.SetActive(true);
+            }
+            RemainingTargets = Targets.Length;
+            targetCount.text = RemainingTargets + " / " + Targets.Length;
             elapsedTime = 0.0f;
         }
-        // In retrospect we should be setting it's active state 
+        // In retrospect we should be setting it's active state to always be the game state, lol
         timer.gameObject.SetActive(val);
     }
+    // basically a failsafe if you're calling it to reset the game, and the obvious timer should be zero.
+    public void ChangeGameState(bool val)
+    {
+        ChangeGameState(val, 0.0f);
+    }
+
+    public void TargetDie()
+    {
+        RemainingTargets -= 1;
+        targetCount.text = RemainingTargets + " / " + Targets.Length;
+    }
+    public void TargetDie(float Acc)
+    {
+
+    }
 }
+
