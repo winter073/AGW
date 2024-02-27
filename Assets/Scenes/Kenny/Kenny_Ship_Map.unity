@@ -67659,21 +67659,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3160738466184501323, guid: e112d965f73b1ef4bbba406bec347759, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8872019adb7cf499c1be6e914b274c, type: 2}
     - target: {fileID: 5894380320747553757, guid: e112d965f73b1ef4bbba406bec347759, type: 3}
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 6523141906015607143, guid: e112d965f73b1ef4bbba406bec347759, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.99441
+      value: -14.573978
       objectReference: {fileID: 0}
     - target: {fileID: 6523141906015607143, guid: e112d965f73b1ef4bbba406bec347759, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.039427
+      value: 4.158665
       objectReference: {fileID: 0}
     - target: {fileID: 6523141906015607143, guid: e112d965f73b1ef4bbba406bec347759, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.749565
+      value: -20.87732
       objectReference: {fileID: 0}
     - target: {fileID: 6523141906015607143, guid: e112d965f73b1ef4bbba406bec347759, type: 3}
       propertyPath: m_LocalRotation.w
