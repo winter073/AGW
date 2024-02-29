@@ -15,7 +15,6 @@ public class PlayerFire : MonoBehaviour
     [SerializeField] float ShotgunCooldown = 5.0f;
     [SerializeField] float ShotgunForce = 10;
     [SerializeField] float GunCooldown = 0.6f;
-    [SerializeField] float GunRange = 10;
     float gunTimer = 0.0f;
     float ShotgunTimer = 0.0f;
 
@@ -42,9 +41,14 @@ public class PlayerFire : MonoBehaviour
         {
             gunTimer = 0;
             Vector3 fire = RCP.transform.forward;
-            if (Physics.Raycast(RCP.transform.position, fire, out RaycastHit hit, GunRange))
+            if (Physics.Raycast(RCP.transform.position, fire, out RaycastHit hit, 50f))
             {
-                Debug.Log("Target hit at: " + hit.point);
+                if (hit.collider.gameObject.CompareTag("Target"))
+                {
+                    Debug.Log("Thing hit is a target.");
+                    hit.collider.gameObject.GetComponent<Target>().BeenHit();
+                }
+                Debug.Log("Thing hit at: " + hit.point);
             }
         }
          if (tempAlt > 0 && ShotgunTimer >= ShotgunCooldown)
