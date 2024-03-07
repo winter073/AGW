@@ -210,7 +210,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -317,7 +317,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -337,10 +337,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RCP: {fileID: 6282534207048856894}
   playerRB: {fileID: 8407894649107962545}
+  recharge: {fileID: 0}
+  rechargeImage: {fileID: 0}
+  player: {fileID: 8986860231643318610}
   ShotgunCooldown: 5
   ShotgunForce: 20
   GunCooldown: 0.3
-  GunRange: 10
 --- !u!1 &6068934728820925898
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +359,7 @@ GameObject:
   - component: {fileID: 8407894649107962545}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6068934728820925898}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -470,8 +472,9 @@ MonoBehaviour:
   TopSpeed: 5
   SprintMod: 1.5
   AdsMod: 0.8
-  JumpPower: 10
+  JumpPower: 3
   isGrounded: 1
+  RocketJumping: 0
 --- !u!54 &8407894649107962545
 Rigidbody:
   m_ObjectHideFlags: 0
