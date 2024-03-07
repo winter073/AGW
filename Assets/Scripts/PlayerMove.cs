@@ -19,7 +19,8 @@ public class PlayerMove : MonoBehaviour
     // I should probably start adding some stuff like RigidBody components and animators. Those will go here.
     Rigidbody rb;
     public bool isGrounded = true;
-    [SerializeField] bool RocketJumping = false;
+    public bool RocketJumping = false;
+    public GameObject GroundRCP;
 
 
     // Start is called before the first frame update, and connects to our camera object.
@@ -37,12 +38,10 @@ public class PlayerMove : MonoBehaviour
         float ADSVal = Input.GetAxis("ADS");
         float SprintVal = Input.GetAxis("Sprint");
         float JumpVal = Input.GetAxis("Jump");
-        // This happens early so the shotgun script can work without overriding
-        if (Input.GetAxis("AltFire") > 0)
-        {
-            RocketJumping = true;
-            isGrounded = false;
-        }
+
+        // Improved ground detection here
+        
+
         // Uses a ternary operator to check if we are aiming down sights.
         // I could just put the Input.GetAxis in here and save space but it's not crucial yet.
         cam.SetADS(ADSVal > 0 ? true : false);
@@ -95,6 +94,8 @@ public class PlayerMove : MonoBehaviour
         {
             // We do both the velocity and the magnitude, in order to make it a strong yet still not immediate stop
             rb.AddForce(rb.velocity * rb.velocity.magnitude * -1);
+            if (rb.velocity.magnitude < 0.15)
+                rb.velocity = Vector3.zero;
         }
 
         // If we're grounded and I jump, jump.
