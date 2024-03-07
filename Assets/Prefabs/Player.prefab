@@ -337,6 +337,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RCP: {fileID: 6282534207048856894}
   playerRB: {fileID: 8407894649107962545}
+  recharge: {fileID: 0}
+  rechargeImage: {fileID: 0}
+  player: {fileID: 8986860231643318610}
   ShotgunCooldown: 5
   ShotgunForce: 20
   GunCooldown: 0.3

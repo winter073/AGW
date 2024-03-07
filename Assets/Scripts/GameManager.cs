@@ -21,30 +21,41 @@ public class GameManager : MonoBehaviour
     {
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Target");
         Targets = temp;
-        ChangeGameState(true);
+        ChangeGameState(false);
+        timer.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        ts = TimeSpan.FromSeconds(elapsedTime);
-        timer.text = String.Format("{0}:{1}.{2}", ts.Minutes, ts.Seconds.ToString("00"), ts.Milliseconds.ToString("000"));
+        if (RunBegan)
+        {
+            elapsedTime += Time.deltaTime;
+            ts = TimeSpan.FromSeconds(elapsedTime);
+            timer.text = String.Format("{0}:{1}.{2}", ts.Minutes, ts.Seconds.ToString("00"), ts.Milliseconds.ToString("000"));
+        }
     }
 
     public void ChangeGameState(bool val, float elapsed)
     {
         RunBegan = val;
-        // If the run ends (a false value),  we should see if this run is actually a leaderboard worthy run.
+        // If the run ends (a false value),  we should calculate a score
         if (RunBegan == false)
         {
-            // Calculate penalties and such for every missed target here
-            // We are assuming the leaderboard has been sorted already. And it should if I did my job right.
-            // if (elapsed < save.times.Min) {Prompt player for name and populate the leaderboard with new score.}
+            // runtime is our time without adjusting for the missed targets
+            string runtime = String.Format("{0}:{1}.{2}", ts.Minutes, ts.Seconds.ToString("00"), ts.Milliseconds.ToString("000"));
+            // Score is our adjusted time (when it works)
+            TimeSpan Score = TimeSpan.FromSeconds(elapsedTime);
+            Score += TimeSpan.FromSeconds(0.5f * RemainingTargets);
+
+            string runtimeAdjusted = String.Format("{0}:{1}.{2}", Score.Minutes, Score.Seconds.ToString("00"), Score.Milliseconds.ToString("000"));
+            timer.text = String.Format("Run Time: {0} \n{1} targets missed (+{2} seconds) \nTotal Score: {3}", runtime, RemainingTargets, RemainingTargets * 0.5f, runtimeAdjusted);
+
         }
         // But if a run BEGINS, we need to enable our timer object and reset the value of it... Probably not in that order.
         else
         {
+            timer.gameObject.SetActive(true);
             foreach (GameObject target in Targets)
             {
                 target.SetActive(true);
@@ -53,8 +64,6 @@ public class GameManager : MonoBehaviour
             targetCount.text = RemainingTargets + " / " + Targets.Length;
             elapsedTime = 0.0f;
         }
-        // In retrospect we should be setting it's active state to always be the game state, lol
-        timer.gameObject.SetActive(val);
     }
     // basically a failsafe if you're calling it to reset the game, and the obvious timer should be zero.
     public void ChangeGameState(bool val)
@@ -66,10 +75,6 @@ public class GameManager : MonoBehaviour
     {
         RemainingTargets -= 1;
         targetCount.text = RemainingTargets + " / " + Targets.Length;
-    }
-    public void TargetDie(float Acc)
-    {
-
     }
 }
 
