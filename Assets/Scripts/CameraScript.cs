@@ -28,8 +28,6 @@ public class CameraScript : MonoBehaviour
     // If this was something else we might want FixedUpdate (and probably could but I don't mind).
     void Update()
     {
-        // Yeah, I know, I know, it's annoying but this is how Unity's rotation is.
-        // I could edit the Axis settings but I really can't be bothered.
         // We clamp the Vertical mouse so we aren't looking straight up or straight down.
         // Can edit the exact values in the Editor.
         rotateX +=Input.GetAxis("Mouse Y") * mouseSpeed;
