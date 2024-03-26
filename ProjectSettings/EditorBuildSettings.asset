@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Kenny/Kenny_Ship_Map.unity
+    guid: bd117f996ad04d24d9ea6820651f567e
   m_configObjects: {}
