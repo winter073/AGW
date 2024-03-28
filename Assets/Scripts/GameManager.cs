@@ -9,10 +9,6 @@ public class GameManager : MonoBehaviour
     float elapsedTime = 0.0f;
     bool RunBegan = false;
     int RemainingTargets;
-    float AverageAcc; // Accounts for all shots fired
-    int ShotsFired; // How many total shots
-    int HitAcc; // How accurate the shots that hit were
-    int ShotsHit; // How many shots actually hit the target
     public GameObject[] Targets;
     TimeSpan ts;
     [SerializeField] TextMeshProUGUI timer, targetCount;
