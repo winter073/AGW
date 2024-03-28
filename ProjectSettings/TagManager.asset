@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target
   - Interactable
+  - Pit
   layers:
   - Default
   - TransparentFX
