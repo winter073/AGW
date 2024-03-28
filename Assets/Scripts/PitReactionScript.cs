@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PitReactionScript : MonoBehaviour
 {
-    [SerializeField] Vector3 destination;
+    [SerializeField] Vector3 Brazil;
 
     public void SendPlayerToBrazil(GameObject player)
     {
-        player.transform.position = destination;
+        player.transform.position = Brazil;
     }
 }
