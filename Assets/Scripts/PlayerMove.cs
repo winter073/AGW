@@ -19,8 +19,7 @@ public class PlayerMove : MonoBehaviour
     // I should probably start adding some stuff like RigidBody components and animators. Those will go here.
     Rigidbody rb;
     public bool isGrounded = true;
-    public bool RocketJumping = false;
-    public GameObject GroundRCP;
+    [SerializeField] bool RocketJumping = false;
 
 
     // Start is called before the first frame update, and connects to our camera object.
@@ -38,31 +37,18 @@ public class PlayerMove : MonoBehaviour
         float ADSVal = Input.GetAxis("ADS");
         float SprintVal = Input.GetAxis("Sprint");
         float JumpVal = Input.GetAxis("Jump");
-
-        // Improved ground detection here
-        RaycastHit groundCheck;
-        // If this rayCast hits something, we should be grounded. If not, by extension we should NOT be grounded.
-        if (Physics.Raycast(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down), out groundCheck, Mathf.Infinity))
+        // This happens early so the shotgun script can work without overriding
+        if (Input.GetAxis("AltFire") > 0)
         {
-            if (groundCheck.distance < 0.15f)
-            {
-                isGrounded = true;
-                Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.green, 60);
-            }
-            else
-            {
-                isGrounded = false;
-                Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.red, 60);
-            }
+            RocketJumping = true;
+            isGrounded = false;
         }
-
         // Uses a ternary operator to check if we are aiming down sights.
         // I could just put the Input.GetAxis in here and save space but it's not crucial yet.
         cam.SetADS(ADSVal > 0 ? true : false);
 
-        float tempX = Input.GetAxisRaw("Horizontal"); // RAW input needed due to normalization later
+        float tempX = Input.GetAxisRaw("Horizontal");
         float tempY = Input.GetAxisRaw("Vertical");
-
 
         if (Mathf.Abs(tempX) + Mathf.Abs(tempY) > 0 && isGrounded) // If we *are* trying to move...
         {
@@ -109,8 +95,6 @@ public class PlayerMove : MonoBehaviour
         {
             // We do both the velocity and the magnitude, in order to make it a strong yet still not immediate stop
             rb.AddForce(rb.velocity * rb.velocity.magnitude * -1);
-            if (rb.velocity.magnitude < 0.15)
-                rb.velocity = Vector3.zero;
         }
 
         // If we're grounded and I jump, jump.
@@ -124,12 +108,17 @@ public class PlayerMove : MonoBehaviour
         transform.rotation = cam.GetRotation();
         Debug.Log(rb.velocity.magnitude);
     }
-    // if we hit a thing, we've probably lost our momentum and we are no longer rocketJumping
+    // TODO: Refine Grounded thing to actually check if it's the ground in question.
     private void OnCollisionStay(Collision thing)
     {
+        isGrounded = true;
         RocketJumping = false;
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {

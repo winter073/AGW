@@ -62,8 +62,6 @@ public class PlayerFire : MonoBehaviour
         }
          if (tempAlt > 0 && ShotgunTimer >= ShotgunCooldown)
         {
-            player.isGrounded = false;
-            player.RocketJumping = true;
             Vector3 fire = RCP.transform.forward;
             playerRB.AddForce(playerRB.velocity * -0.5f, ForceMode.Impulse);
             playerRB.AddForce(fire * -ShotgunForce, ForceMode.Impulse);
