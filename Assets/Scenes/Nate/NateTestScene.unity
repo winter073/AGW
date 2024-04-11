@@ -1000,17 +1000,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &831674738 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8554963540076086587, guid: 85d4a73043a2e884a8d61ec30e39dc95, type: 3}
-  m_PrefabInstance: {fileID: 893756500543659236}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &906620967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,17 +1051,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4546123301580875710, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
   m_PrefabInstance: {fileID: 3193759192025357150}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1040135357 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7205467278504181040, guid: 85d4a73043a2e884a8d61ec30e39dc95, type: 3}
-  m_PrefabInstance: {fileID: 893756500543659236}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1077971720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,11 +2517,15 @@ PrefabInstance:
     - target: {fileID: 4774695285926917946, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
       propertyPath: recharge
       value: 
-      objectReference: {fileID: 831674738}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774695285926917946, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
+      propertyPath: GunCooldown
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4774695285926917946, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
       propertyPath: rechargeImage
       value: 
-      objectReference: {fileID: 1040135357}
+      objectReference: {fileID: 0}
     - target: {fileID: 6068934728820925898, guid: 23e006e17925e1241ae972359f71a7c0, type: 3}
       propertyPath: m_Name
       value: PlayerModel

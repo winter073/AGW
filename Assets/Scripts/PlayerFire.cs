@@ -8,8 +8,8 @@ public class PlayerFire : MonoBehaviour
     // RayCastPoint, shorthanded to RCP.
     [SerializeField] GameObject RCP;
     [SerializeField] Rigidbody playerRB;
-    [SerializeField] Slider recharge;
-    [SerializeField] Image rechargeImage;
+    Slider recharge;
+    Image rechargeImage;
 
     CameraScript cam;
     [SerializeField] PlayerMove player;
@@ -28,7 +28,9 @@ public class PlayerFire : MonoBehaviour
     {
         gunTimer = GunCooldown;
         ShotgunTimer = ShotgunCooldown;
-        cam = Camera.main.GetComponent<CameraScript>();;
+        cam = Camera.main.GetComponent<CameraScript>();
+        recharge = GameObject.Find("Slider").GetComponent<Slider>();
+        rechargeImage = GameObject.Find("Slider/Fill Area/Fill").GetComponent<Image>();
     }
 
     // Update is called once per frame

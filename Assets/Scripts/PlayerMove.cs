@@ -21,6 +21,7 @@ public class PlayerMove : MonoBehaviour
     public bool isGrounded = true;
     public bool RocketJumping = false;
     public GameObject GroundRCP;
+    Animator anim;
 
 
     // Start is called before the first frame update, and connects to our camera object.
@@ -38,21 +39,22 @@ public class PlayerMove : MonoBehaviour
         float ADSVal = Input.GetAxis("ADS");
         float SprintVal = Input.GetAxis("Sprint");
         float JumpVal = Input.GetAxis("Jump");
+        
 
         // Improved ground detection here
         RaycastHit groundCheck;
-        // If this rayCast hits something, we should be grounded. If not, by extension we should NOT be grounded.
+        // If this rayCast is shorter than a certain distance, we're grounded. Otherwise, not grounded.
         if (Physics.Raycast(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down), out groundCheck, Mathf.Infinity))
         {
             if (groundCheck.distance < 0.15f)
             {
                 isGrounded = true;
-                Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.green, 60);
+                //Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.green, 60);
             }
             else
             {
                 isGrounded = false;
-                Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.red, 60);
+                //Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.red, 60);
             }
         }
 
@@ -66,10 +68,11 @@ public class PlayerMove : MonoBehaviour
 
         if (Mathf.Abs(tempX) + Mathf.Abs(tempY) > 0 && isGrounded) // If we *are* trying to move...
         {
-            // Convert our two input axes into a Vector3 so we can easily apply it to the character.
+            // Convert our two input axes into a Vector3 so we can easily apply it to the character. 
+            // Then, we calculate which direction we're moving in 
             var tempInput = (new Vector3(tempX, 0, tempY)).normalized;
 
-            // We must multiply the Vector3 by the int due to how matrix math works
+            // We must multiply the Quaternion by the Vector3 due to how matrix math works
             var moveDir = cam.GetRotation() * tempInput;
 
             // Modify speed based on Sprint Status unless we are using ADS
@@ -122,7 +125,7 @@ public class PlayerMove : MonoBehaviour
 
         // always look "forward" since this is a TPS.
         transform.rotation = cam.GetRotation();
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
     }
     // if we hit a thing, we've probably lost our momentum and we are no longer rocketJumping
     private void OnCollisionStay(Collision thing)

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-
     GameManager gm;
-    GameObject center;
 
     // Upon existing, find the Game Manager. Things won't work without it.
     void Start()
@@ -15,7 +13,8 @@ public class Target : MonoBehaviour
     }
     
     public void BeenHit()
-    //  This overload assumes accuracy doesn't matter, and therefore we don't care how far away it was from the center.
+    //  When we've been shot, tell the GameManager and deactivate ourselves.
+    //  If time allows, disable the collider first, add an animation for being hit, THEN deactivate. If we do this, probably reenable the collider right as we deactivate.
     {
         gm.TargetDie();
         gameObject.SetActive(false);
