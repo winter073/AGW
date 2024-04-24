@@ -381,6 +381,7 @@ Transform:
   - {fileID: 2611801260104384629}
   - {fileID: 2073491956709580087}
   - {fileID: 4008474094448952915}
+  - {fileID: 8552479203396535404}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3565550913776999226
@@ -475,6 +476,7 @@ MonoBehaviour:
   JumpPower: 3
   isGrounded: 1
   RocketJumping: 0
+  GroundRCP: {fileID: 8486300164702887734}
 --- !u!54 &8407894649107962545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -484,7 +486,7 @@ Rigidbody:
   m_GameObject: {fileID: 6068934728820925898}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -563,4 +565,35 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2073491956709580087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8486300164702887734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8552479203396535404}
+  m_Layer: 0
+  m_Name: GroundRayCast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8552479203396535404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486300164702887734}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906747816186004786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
