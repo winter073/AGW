@@ -15,6 +15,15 @@ public class PlayerMove : MonoBehaviour
     public float JumpPower;
     GameManager GM;
 
+    // AUDIO STUFF HERE //
+    public AudioClip[] sounds; 
+    /* 0 = Death
+     * 1 = Light Step
+     * 2 = Metal Step
+     * 3 = Stone Step
+     * 4 = Shotgun Fire
+     */
+
 
     // I should probably start adding some stuff like RigidBody components and animators. Those will go here.
     Rigidbody rb;

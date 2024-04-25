@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     int RemainingTargets;
     public GameObject[] Targets;
     TimeSpan ts;
-    [SerializeField] TextMeshProUGUI timer, targetCount;
+    [SerializeField] TextMeshProUGUI timer, targetCount, calculationText;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +46,8 @@ public class GameManager : MonoBehaviour
             Score += TimeSpan.FromSeconds(0.5f * RemainingTargets);
 
             string runtimeAdjusted = GetFormattedTime(Score);
-            timer.text = String.Format("Run Time: {0} \n{1} targets missed (+{2} seconds) \nTotal Score: {3}", runtime, RemainingTargets, RemainingTargets * 0.5f, runtimeAdjusted);
+            timer.text = runtimeAdjusted;
+            calculationText.text = String.Format("Run Time: {0} \n{1} targets missed (+{2} seconds) \nTotal Score: {3}", runtime, RemainingTargets, RemainingTargets * 0.5f, runtimeAdjusted);
 
         }
         // But if a run BEGINS, we need to enable our timer object and reset the value of it... Probably not in that order.
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
             RemainingTargets = Targets.Length;
             targetCount.text = RemainingTargets + " / " + Targets.Length;
             elapsedTime = 0.0f;
+            calculationText.text = String.Empty;
         }
     }
     // basically a failsafe if you're calling it to reset the game, and the obvious timer should be zero.
