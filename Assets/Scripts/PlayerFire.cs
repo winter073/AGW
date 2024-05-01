@@ -41,7 +41,7 @@ public class PlayerFire : MonoBehaviour
         recharge.value = Mathf.Clamp(ShotgunTimer/ShotgunCooldown, 0, 1);
         if (ShotgunTimer >= ShotgunCooldown)
         {
-            rechargeImage.color = Color.clear;
+// rechargeImage.color = Color.clear;
         }
         // We also need to make sure the RCP is pointed where the camera is pointed. I'm told that's a good idea.
         transform.forward = cam.transform.forward;
