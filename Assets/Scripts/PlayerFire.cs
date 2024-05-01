@@ -22,10 +22,15 @@ public class PlayerFire : MonoBehaviour
     float gunTimer = 0.0f;
     float ShotgunTimer = 0.0f;
 
+    // AUDIO STUFF HERE //
+    public AudioClip gunSound, ShotSound;
+    AudioSource AS;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        AS = GetComponent<AudioSource>();
         gunTimer = GunCooldown;
         ShotgunTimer = ShotgunCooldown;
         cam = Camera.main.GetComponent<CameraScript>();
@@ -50,6 +55,7 @@ public class PlayerFire : MonoBehaviour
         var tempAlt = Input.GetAxis("AltFire");
         if (tempFire > 0 && gunTimer >= GunCooldown)
         {
+            AS.PlayOneShot(gunSound);
             gunTimer = 0;
             Vector3 fire = RCP.transform.forward;
             if (Physics.Raycast(RCP.transform.position, fire, out RaycastHit hit, 50f))
@@ -72,6 +78,7 @@ public class PlayerFire : MonoBehaviour
             ShotgunTimer = 0;
             recharge.value = 0;
             rechargeImage.color = Color.white;
+            AS.PlayOneShot(ShotSound);
         }
 
     }

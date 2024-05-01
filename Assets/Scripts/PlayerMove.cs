@@ -15,14 +15,7 @@ public class PlayerMove : MonoBehaviour
     public float JumpPower;
     GameManager GM;
 
-    // AUDIO STUFF HERE //
-    public AudioClip[] sounds; 
-    /* 0 = Death
-     * 1 = Light Step
-     * 2 = Metal Step
-     * 3 = Stone Step
-     * 4 = Shotgun Fire
-     */
+    
 
 
     // I should probably start adding some stuff like RigidBody components and animators. Those will go here.
@@ -39,49 +32,39 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         // For this to work, the Camera needs the Main Camera tag in the editor.
         cam = Camera.main.GetComponent<CameraScript>();
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Before we move, gonna do myself a favor and call these now. All relevant Axes for just movement.
+        //Gather all movement input.
         float ADSVal = Input.GetAxis("ADS");
         float SprintVal = Input.GetAxis("Sprint");
         float JumpVal = Input.GetAxis("Jump");
         
 
-        // Improved ground detection here
         RaycastHit groundCheck;
         // If this rayCast is shorter than a certain distance, we're grounded. Otherwise, not grounded.
         if (Physics.Raycast(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down), out groundCheck, Mathf.Infinity))
         {
-            if (groundCheck.distance < 0.15f)
-            {
-                isGrounded = true;
-                //Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.green, 60);
-            }
-            else
-            {
-                isGrounded = false;
-                //Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.red, 60);
-            }
+            isGrounded = groundCheck.distance < 0.15f ? true : false;
         }
 
-        // Uses a ternary operator to check if we are aiming down sights.
-        // I could just put the Input.GetAxis in here and save space but it's not crucial yet.
+        // If aiming down sights, adjust the camera as such.
         cam.SetADS(ADSVal > 0 ? true : false);
 
-        float tempX = Input.GetAxisRaw("Horizontal"); // RAW input needed due to normalization later
+        // RAW input needed due to normalization later
+        float tempX = Input.GetAxisRaw("Horizontal");
         float tempY = Input.GetAxisRaw("Vertical");
 
 
         if (Mathf.Abs(tempX) + Mathf.Abs(tempY) > 0 && isGrounded) // If we *are* trying to move...
         {
             // Convert our two input axes into a Vector3 so we can easily apply it to the character. 
-            // Then, we calculate which direction we're moving in 
             var tempInput = (new Vector3(tempX, 0, tempY)).normalized;
 
-            // We must multiply the Quaternion by the Vector3 due to how matrix math works
+            // Multiply order matters
             var moveDir = cam.GetRotation() * tempInput;
 
             // Modify speed based on Sprint Status unless we are using ADS
@@ -90,10 +73,8 @@ public class PlayerMove : MonoBehaviour
             moveDir = ADSVal > 0 ? moveDir * AdsMod : moveDir;
 
             // We want to basically kneecap our inertia if we're trying to move in another direction
-            if (Vector3.Dot(moveDir, rb.velocity) < 0)
-            {
-                moveDir *= 2;
-            }
+            moveDir *= Vector3.Dot(moveDir, rb.velocity) < 0 ? 2 : 1;
+            
             // Now that everything has been calculated, we should apply the force...
             rb.AddForce(moveDir * SpeedModifier);
 
@@ -113,7 +94,6 @@ public class PlayerMove : MonoBehaviour
             {
                 rb.velocity = new Vector3(tempVel.x, rb.velocity.y, tempVel.z).normalized * calcTop;
             }
-            
         }
         // Now if we're not moving and we're on the ground we optimally want to completely stop our movement.
         // Barring that, we want to make the slow down feel natural.
@@ -134,7 +114,6 @@ public class PlayerMove : MonoBehaviour
 
         // always look "forward" since this is a TPS.
         transform.rotation = cam.GetRotation();
-        //Debug.Log(rb.velocity.magnitude);
     }
     // if we hit a thing, we've probably lost our momentum and we are no longer rocketJumping
     private void OnCollisionStay(Collision thing)

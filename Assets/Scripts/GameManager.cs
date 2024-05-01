@@ -34,10 +34,11 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGameState(bool SentState, float elapsed)
     {
-        
+        CameraScript CS = GameObject.Find("Camera").GetComponent<CameraScript>();
         // If the run state is CHANGING to false, and wasn't already such, commence the run time calculation.
         if (SentState != RunState && SentState == false)
         {
+            CS.SetAudio(false);
             RunState = false;
             // runtime is our time without adjusting for the missed targets
             string runtime = GetFormattedTime(ts);
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         // But if a run BEGINS, we need to enable our timer object and reset the value of it... Probably not in that order.
         else if (SentState != RunState && SentState == true)
         {
+            CS.SetAudio(true);
             RunState = true;
             timer.gameObject.SetActive(true);
             foreach (GameObject target in Targets)
