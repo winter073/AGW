@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -23,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     public bool isGrounded = true;
     public bool RocketJumping = false;
     public GameObject GroundRCP;
-    Animator anim;
+    public Animator anim;
 
 
     // Start is called before the first frame update, and connects to our camera object.
@@ -32,7 +33,6 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         // For this to work, the Camera needs the Main Camera tag in the editor.
         cam = Camera.main.GetComponent<CameraScript>();
-        
     }
 
     // Update is called once per frame
@@ -48,7 +48,8 @@ public class PlayerMove : MonoBehaviour
         // If this rayCast is shorter than a certain distance, we're grounded. Otherwise, not grounded.
         if (Physics.Raycast(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down), out groundCheck, Mathf.Infinity))
         {
-            isGrounded = groundCheck.distance < 0.15f ? true : false;
+            isGrounded = groundCheck.distance < 0.25f ? true : false;
+            anim.SetBool("Jumping", false);
         }
 
         // If aiming down sights, adjust the camera as such.
@@ -114,6 +115,9 @@ public class PlayerMove : MonoBehaviour
 
         // always look "forward" since this is a TPS.
         transform.rotation = cam.GetRotation();
+        // Apply our velocity values to the relevant animation trigger.
+        anim.SetFloat("Horizontal", rb.velocity.x);
+        anim.SetFloat("ForwardBack", rb.velocity.z);
     }
     // if we hit a thing, we've probably lost our momentum and we are no longer rocketJumping
     private void OnCollisionStay(Collision thing)
