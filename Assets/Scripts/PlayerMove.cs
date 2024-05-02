@@ -40,29 +40,14 @@ public class PlayerMove : MonoBehaviour
         float JumpVal = Input.GetAxis("Jump");
 
         // Improved ground detection here
-        RaycastHit groundCheck;
-        // If this rayCast hits something, we should be grounded. If not, by extension we should NOT be grounded.
-        if (Physics.Raycast(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down), out groundCheck, Mathf.Infinity))
-        {
-            if (groundCheck.distance < 0.15f)
-            {
-                isGrounded = true;
-                Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.green, 60);
-            }
-            else
-            {
-                isGrounded = false;
-                Debug.DrawRay(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down) * groundCheck.distance, Color.red, 60);
-            }
-        }
+        
 
         // Uses a ternary operator to check if we are aiming down sights.
         // I could just put the Input.GetAxis in here and save space but it's not crucial yet.
         cam.SetADS(ADSVal > 0 ? true : false);
 
-        float tempX = Input.GetAxisRaw("Horizontal"); // RAW input needed due to normalization later
+        float tempX = Input.GetAxisRaw("Horizontal");
         float tempY = Input.GetAxisRaw("Vertical");
-
 
         if (Mathf.Abs(tempX) + Mathf.Abs(tempY) > 0 && isGrounded) // If we *are* trying to move...
         {
@@ -124,12 +109,17 @@ public class PlayerMove : MonoBehaviour
         transform.rotation = cam.GetRotation();
         Debug.Log(rb.velocity.magnitude);
     }
-    // if we hit a thing, we've probably lost our momentum and we are no longer rocketJumping
+    // TODO: Refine Grounded thing to actually check if it's the ground in question.
     private void OnCollisionStay(Collision thing)
     {
+        isGrounded = true;
         RocketJumping = false;
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
