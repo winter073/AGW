@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour
         // If this rayCast is shorter than a certain distance, we're grounded. Otherwise, not grounded.
         if (Physics.Raycast(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down), out groundCheck, Mathf.Infinity))
         {
-            isGrounded = groundCheck.distance < 0.25f ? true : false;
+            isGrounded = groundCheck.distance < 0.3f ? true : false;
             anim.SetBool("Jumping", false);
         }
 
@@ -90,18 +90,19 @@ public class PlayerMove : MonoBehaviour
             }
             // Now, we need to actually check and make sure we aren't going too fast, provided we're not rocket jumping of course.
             // But jumping should NOT affect our X and Z movement.
-            var tempVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            var tempVel = rb.velocity;
             if (!RocketJumping && tempVel.magnitude > calcTop)
             {
                 rb.velocity = new Vector3(tempVel.x, rb.velocity.y, tempVel.z).normalized * calcTop;
             }
+            tempVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
         // Now if we're not moving and we're on the ground we optimally want to completely stop our movement.
         // Barring that, we want to make the slow down feel natural.
         else if (isGrounded && rb.velocity.magnitude > 1)
         {
             // We do both the velocity and the magnitude, in order to make it a strong yet still not immediate stop
-            rb.AddForce(rb.velocity * rb.velocity.magnitude * -1);
+            rb.AddForce(rb.velocity * rb.velocity.magnitude * -1.8f);
             if (rb.velocity.magnitude < 0.15)
                 rb.velocity = Vector3.zero;
         }
@@ -116,8 +117,9 @@ public class PlayerMove : MonoBehaviour
         // always look "forward" since this is a TPS.
         transform.rotation = cam.GetRotation();
         // Apply our velocity values to the relevant animation trigger.
-        anim.SetFloat("Horizontal", rb.velocity.x);
-        anim.SetFloat("ForwardBack", rb.velocity.z);
+        var tempAnim = transform.InverseTransformDirection(rb.velocity);
+        anim.SetFloat("Horizontal", tempAnim.x);
+        anim.SetFloat("ForwardBack", tempAnim.z);
     }
     // if we hit a thing, we've probably lost our momentum and we are no longer rocketJumping
     private void OnCollisionStay(Collision thing)

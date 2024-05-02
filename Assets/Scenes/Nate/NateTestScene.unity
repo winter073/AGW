@@ -2741,11 +2741,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ffd529643ef8c429ac93161d868f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedModifier: 5
+  SpeedModifier: 20
   TopSpeed: 5
-  SprintMod: 1.2
+  SprintMod: 1.5
   AdsMod: 0.8
-  JumpPower: 0
+  JumpPower: 3
   isGrounded: 1
   RocketJumping: 0
   GroundRCP: {fileID: 8486300166043584576}
