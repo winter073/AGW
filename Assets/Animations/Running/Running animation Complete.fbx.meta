@@ -16,7 +16,9 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tFound
+      duplicate transform 'Speed_Runner_base_Rig_4_25:RightThumbFinger' for human
+      bone 'Right Thumb Proximal' and 'Left Thumb Proximal'\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,14 +26,43 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 1827226128182048838
+      firstFrame: 0
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -82,7 +113,312 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Running animation Complete(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Speed_Runner_Model
+      parentName: Running animation Complete(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Root
+      parentName: Running animation Complete(Clone)
+      position: {x: -0.000072903, y: 0.15499526, z: -0.004133852}
+      rotation: {x: -0, y: -0, z: -0.0000000014551917, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Spine
+      parentName: Speed_Runner_base_Rig_4_25:Root
+      position: {x: 0.000000013797122, y: 0.03319965, z: -0.000000019742735}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:Chest
+      parentName: Speed_Runner_base_Rig_4_25:Spine
+      position: {x: 0.00025343255, y: 0.037508015, z: -4.5818688e-36}
+      rotation: {x: 4.0477404e-12, y: -0.004450254, z: -9.0954355e-10, w: 0.9999901}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Neck
+      parentName: Speed_Runner_base_Rig_4_25:Chest
+      position: {x: 0.00050685345, y: 0.026356136, z: -0.000000008035956}
+      rotation: {x: 0.000000011660502, y: 0.0000000023283064, z: 0.0000000023646867, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Head
+      parentName: Speed_Runner_base_Rig_4_25:Neck
+      position: {x: -0.0010137197, y: 0.03598708, z: -0.000000008782367}
+      rotation: {x: 0.010102949, y: 0.0027678, z: -0.0024990938, w: 0.99994206}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Left_Arm
+      parentName: Speed_Runner_base_Rig_4_25:Chest
+      position: {x: -0.015459372, y: 0.008616668, z: 0.0000000021783655}
+      rotation: {x: -3.8855495e-11, y: -0.000000004656613, z: 0.00000000527507, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Left_Shoulder
+      parentName: Speed_Runner_base_Rig_4_25:Left_Arm
+      position: {x: -0.016473092, y: 0.004561775, z: -1.4146806e-10}
+      rotation: {x: -0.00029515388, y: 0.0019882668, z: -0.03316032, w: 0.99944806}
+      scale: {x: 1, y: 1.0000002, z: 0.9999995}
+    - name: Speed_Runner_base_Rig_4_25:Left_Elbow
+      parentName: Speed_Runner_base_Rig_4_25:Left_Shoulder
+      position: {x: -0.04992625, y: -0.0073486, z: 0.0000037694529}
+      rotation: {x: -1.5542218e-10, y: -0.000000022817403, z: -0.000000040745363, w: 1}
+      scale: {x: 0.9999996, y: 0.9999999, z: 1.0000007}
+    - name: Speed_Runner_base_Rig_4_25:LeftHand
+      parentName: Speed_Runner_base_Rig_4_25:Left_Elbow
+      position: {x: -0.03951429, y: 0.00050588406, z: -0.000025222069}
+      rotation: {x: 0.01529237, y: 0.00043111373, z: 0.9995176, w: -0.027028654}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:LeftRingFinger
+      parentName: Speed_Runner_base_Rig_4_25:LeftHand
+      position: {x: 0.007347012, y: 0.0029923122, z: -0.00092854974}
+      rotation: {x: 0.9805288, y: -0.1943211, z: -0.023862524, w: 0.0152747}
+      scale: {x: 1.0000002, y: 1, z: 1.0000005}
+    - name: Speed_Runner_base_Rig_4_25:LeftRingKnuckle
+      parentName: Speed_Runner_base_Rig_4_25:LeftRingFinger
+      position: {x: 0.01781368, y: -0.005411779, z: 0.00014472527}
+      rotation: {x: -0.123522654, y: -0.9918892, z: -0.0010000156, w: -0.029949827}
+      scale: {x: 1.0000004, y: 0.99999994, z: 0.9999992}
+    - name: Speed_Runner_base_Rig_4_25:joint10
+      parentName: Speed_Runner_base_Rig_4_25:LeftRingKnuckle
+      position: {x: -0.0048792497, y: 0.000033922184, z: -0.000016914753}
+      rotation: {x: -0.00000001536682, y: -0.0000000074505797, z: 0.006863146, w: 0.9999765}
+      scale: {x: 0.99999934, y: 0.99999994, z: 0.9999999}
+    - name: Speed_Runner_base_Rig_4_25:joint11
+      parentName: Speed_Runner_base_Rig_4_25:joint10
+      position: {x: -0.007370464, y: 0.000013435403, z: -0.00032437334}
+      rotation: {x: 0.00125763, y: 0.9999993, z: -0.000000032548197, w: 0.000000059363334}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Speed_Runner_base_Rig_4_25:RightThumbFinger
+      parentName: Speed_Runner_base_Rig_4_25:LeftHand
+      position: {x: 0.005920405, y: -0.008975331, z: -0.0009289452}
+      rotation: {x: 0.94641054, y: 0.086619556, z: 0.2909862, w: 0.11014162}
+      scale: {x: 1.0000002, y: 1, z: 1.0000005}
+    - name: Speed_Runner_base_Rig_4_25:RightThumbknuckle
+      parentName: Speed_Runner_base_Rig_4_25:RightThumbFinger
+      position: {x: 0.007447467, y: 0.0036755772, z: 0.00077740714}
+      rotation: {x: 0.51290846, y: -0.8564654, z: -0.058180355, w: -0.002670185}
+      scale: {x: 0.99999946, y: 1.0000005, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:joint8
+      parentName: Speed_Runner_base_Rig_4_25:RightThumbknuckle
+      position: {x: -0.006663041, y: -0.0040304223, z: -0.0009897439}
+      rotation: {x: -0.60130215, y: 0.7990218, z: 0.0000000027939677, w: 0.000000022351742}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000004}
+    - name: Speed_Runner_base_Rig_4_25:Left_Pinky
+      parentName: Speed_Runner_base_Rig_4_25:LeftHand
+      position: {x: 0.007406861, y: 0.0077101453, z: 0.0018275339}
+      rotation: {x: 0.9547392, y: -0.2819167, z: 0.07688937, w: 0.05553485}
+      scale: {x: 1.0000002, y: 1, z: 1.0000005}
+    - name: Speed_Runner_base_Rig_4_25:Left_Pinky_Knuckle
+      parentName: Speed_Runner_base_Rig_4_25:Left_Pinky
+      position: {x: 0.010679999, y: -0.0059610335, z: 0.003176105}
+      rotation: {x: -0.088125676, y: -0.8966114, z: 0.20648864, w: -0.38168615}
+      scale: {x: 0.9999997, y: 0.99999994, z: 0.9999998}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint10
+      parentName: Speed_Runner_base_Rig_4_25:Left_Pinky_Knuckle
+      position: {x: -0.00571884, y: -0.0017173248, z: 0.0047171693}
+      rotation: {x: -0.22756892, y: 0.28592107, z: -0.17968427, w: 0.9133319}
+      scale: {x: 1.0000005, y: 1.0000001, z: 1.0000002}
+    - name: Speed_Runner_base_Rig_4_25:Leftjoint11
+      parentName: Speed_Runner_base_Rig_4_25:Left_joint10
+      position: {x: -0.0028827079, y: -0.0026240775, z: -0.0004314689}
+      rotation: {x: 0.11002367, y: 0.99392897, z: -0.00000007286167, w: 0.0000000064468653}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:LeftIndexFinger
+      parentName: Speed_Runner_base_Rig_4_25:LeftHand
+      position: {x: 0.007901803, y: -0.0051710466, z: -0.00092839595}
+      rotation: {x: 0.99923676, y: -0.029670361, z: 0.02518106, w: -0.0033905667}
+      scale: {x: 1.0000002, y: 1, z: 1.0000005}
+    - name: Speed_Runner_base_Rig_4_25:LeftIndexKnuckle
+      parentName: Speed_Runner_base_Rig_4_25:LeftIndexFinger
+      position: {x: 0.018175619, y: 0.0013055356, z: 0.00068303256}
+      rotation: {x: 0.06370755, y: -0.99728024, z: 0.0030797548, w: 0.03693458}
+      scale: {x: 1.0000005, y: 1, z: 0.99999917}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint5
+      parentName: Speed_Runner_base_Rig_4_25:LeftIndexKnuckle
+      position: {x: -0.006015161, y: -0.00077131734, z: -0.0009078836}
+      rotation: {x: -0.002266593, y: 0.016708864, z: 0.04558067, w: 0.99881834}
+      scale: {x: 0.9999996, y: 1, z: 1.0000008}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint6
+      parentName: Speed_Runner_base_Rig_4_25:Left_joint5
+      position: {x: -0.0056208125, y: 0.00022220443, z: -0.00084055}
+      rotation: {x: -0.037851047, y: 0.9981798, z: 0.0017791521, w: 0.04691787}
+      scale: {x: 1.0000008, y: 1.0000002, z: 1.0000004}
+    - name: Speed_Runner_base_Rig_4_25:LeftMiddleFinger
+      parentName: Speed_Runner_base_Rig_4_25:LeftHand
+      position: {x: 0.007822547, y: -0.0018422983, z: -0.00092841795}
+      rotation: {x: 0.99167, y: -0.122462265, z: 0.03643565, w: 0.016312858}
+      scale: {x: 1.0000002, y: 1, z: 1.0000005}
+    - name: Speed_Runner_base_Rig_4_25:LeftMiddleKnuckle
+      parentName: Speed_Runner_base_Rig_4_25:LeftMiddleFinger
+      position: {x: 0.017450737, y: -0.0030118646, z: 0.0028115718}
+      rotation: {x: 0.00801999, y: -0.024733825, z: -0.083896205, w: 0.99613523}
+      scale: {x: 1.0000008, y: 1, z: 0.99999946}
+    - name: Speed_Runner_base_Rig_4_25:Left__joint2
+      parentName: Speed_Runner_base_Rig_4_25:LeftMiddleKnuckle
+      position: {x: 0.009086178, y: 0.00059349963, z: 0.0014331402}
+      rotation: {x: -0.000000035157427, y: -0.000000018626451, z: -0.000000022482709, w: 1}
+      scale: {x: 0.99999934, y: 1.0000001, z: 1.0000006}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint1
+      parentName: Speed_Runner_base_Rig_4_25:Left__joint2
+      position: {x: 0.0062916926, y: 0.00064960663, z: 0.0012304106}
+      rotation: {x: 0.000000030267984, y: 0.000000018626451, z: 0.000000026040652, w: 1}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999996}
+    - name: Speed_Runner_base_Rig_4_25:Chest_RightArm
+      parentName: Speed_Runner_base_Rig_4_25:Chest
+      position: {x: 0.015456898, y: 0.008616688, z: -0.00027517715}
+      rotation: {x: 0.9999604, y: -4.4068138e-10, z: -0.008900419, w: 0.0000000118170735}
+      scale: {x: 1, y: 1.0000001, z: 1.0000004}
+    - name: Speed_Runner_base_Rig_4_25:RightShoulder
+      parentName: Speed_Runner_base_Rig_4_25:Chest_RightArm
+      position: {x: 0.016473128, y: -0.004562001, z: 0.0000000027303138}
+      rotation: {x: -0.00029547352, y: 0.002011193, z: -0.033198856, w: 0.99944675}
+      scale: {x: 1.0000007, y: 1.0000002, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:RightShoulder_RightArm
+      parentName: Speed_Runner_base_Rig_4_25:RightShoulder
+      position: {x: 0.049925774, y: 0.0073521063, z: 0.0000010158359}
+      rotation: {x: -0.000000013537983, y: -0.0000000027939675, z: -1.6472818e-16, w: 1}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000004}
+    - name: Speed_Runner_base_Rig_4_25:Right_Hand
+      parentName: Speed_Runner_base_Rig_4_25:RightShoulder_RightArm
+      position: {x: 0.042174235, y: -0.00050620217, z: 0.0000016439525}
+      rotation: {x: -0.015292465, y: -0.00042109287, z: -0.9995065, w: 0.027436143}
+      scale: {x: 1, y: 0.9999998, z: 1.0000002}
+    - name: Speed_Runner_base_Rig_4_25:RightRingFinger
+      parentName: Speed_Runner_base_Rig_4_25:Right_Hand
+      position: {x: -0.007346973, y: -0.002992, z: 0.0009285522}
+      rotation: {x: -0.98350775, y: 0.17820479, z: 0.02884823, w: -0.011112212}
+      scale: {x: 0.99999994, y: 1.0000002, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:LeftRingKnuckle1
+      parentName: Speed_Runner_base_Rig_4_25:RightRingFinger
+      position: {x: -0.019154817, y: 0.0050817477, z: 0.00018305145}
+      rotation: {x: -0.13477498, y: -0.9902553, z: -0.00008922481, w: -0.035074178}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:joint12
+      parentName: Speed_Runner_base_Rig_4_25:LeftRingKnuckle1
+      position: {x: 0.004879208, y: -0.000034161723, z: 0.000016919354}
+      rotation: {x: -0.000000033061948, y: -0.00000001117587, z: 0.0068632504, w: 0.9999765}
+      scale: {x: 0.9999998, y: 1.0000002, z: 1.0000004}
+    - name: Speed_Runner_base_Rig_4_25:joint13
+      parentName: Speed_Runner_base_Rig_4_25:joint12
+      position: {x: 0.0073705553, y: -0.00001305995, z: 0.00032436344}
+      rotation: {x: 0.0012576076, y: 0.9999993, z: 0.000000029787822, w: 1.6287503e-10}
+      scale: {x: 0.9999998, y: 1.0000001, z: 0.9999998}
+    - name: Speed_Runner_base_Rig_4_25:RightThumbFinger
+      parentName: Speed_Runner_base_Rig_4_25:Right_Hand
+      position: {x: -0.0037869792, y: 0.008334915, z: 0.00088261365}
+      rotation: {x: -0.9571675, y: -0.118590616, z: -0.23474886, w: -0.121076584}
+      scale: {x: 0.99999994, y: 1.0000002, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:RightThumbknuckle1
+      parentName: Speed_Runner_base_Rig_4_25:RightThumbFinger
+      position: {x: -0.0068701888, y: -0.004353981, z: 0.00014807706}
+      rotation: {x: 0.46314937, y: -0.8855913, z: 0.025642196, w: 0.023731694}
+      scale: {x: 0.99999946, y: 1, z: 0.9999998}
+    - name: Speed_Runner_base_Rig_4_25:joint14
+      parentName: Speed_Runner_base_Rig_4_25:RightThumbknuckle1
+      position: {x: 0.00867345, y: 0.0029903804, z: 0.00026897105}
+      rotation: {x: -0.6013022, y: 0.7990218, z: 0.00000005261971, w: -0.00000003166496}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.99999946}
+    - name: Speed_Runner_base_Rig_4_25:Right_Pinky
+      parentName: Speed_Runner_base_Rig_4_25:Right_Hand
+      position: {x: -0.0074068215, y: -0.00771, z: -0.001827535}
+      rotation: {x: -0.9671813, y: 0.25202072, z: -0.0024798696, w: -0.03224625}
+      scale: {x: 0.99999994, y: 1.0000002, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:Left_Pinky_Knuckle1
+      parentName: Speed_Runner_base_Rig_4_25:Right_Pinky
+      position: {x: -0.013728354, y: 0.0061740624, z: -0.0012058293}
+      rotation: {x: 0.07885279, y: -0.99668115, z: -0.0020409555, w: 0.020121321}
+      scale: {x: 0.9999997, y: 0.99999946, z: 0.9999997}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint11
+      parentName: Speed_Runner_base_Rig_4_25:Left_Pinky_Knuckle1
+      position: {x: 0.0035711168, y: 0.0026811117, z: 0.0005863289}
+      rotation: {x: -0.000000011175868, y: 0.000000024214382, z: -0.016290259, w: 0.9998673}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Speed_Runner_base_Rig_4_25:Leftjoint12
+      parentName: Speed_Runner_base_Rig_4_25:Left_joint11
+      position: {x: 0.0028699704, y: 0.0026287048, z: 0.0005873567}
+      rotation: {x: 0.110023685, y: 0.993929, z: 0.000000002927709, w: 0.000000006027069}
+      scale: {x: 1, y: 1.0000004, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:RightIndexFinger
+      parentName: Speed_Runner_base_Rig_4_25:Right_Hand
+      position: {x: -0.007901806, y: 0.0051709996, z: 0.0009283976}
+      rotation: {x: -0.99938345, y: 0.016992422, z: -0.030401006, w: 0.0044649174}
+      scale: {x: 0.99999994, y: 1.0000002, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:LeftIndexKnuckle1
+      parentName: Speed_Runner_base_Rig_4_25:RightIndexFinger
+      position: {x: -0.016950589, y: -0.0020829998, z: -0.00050265016}
+      rotation: {x: 0.06238093, y: -0.9977103, z: -0.0005211004, w: 0.02612538}
+      scale: {x: 0.9999998, y: 0.9999997, z: 0.9999997}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint12
+      parentName: Speed_Runner_base_Rig_4_25:LeftIndexKnuckle1
+      position: {x: 0.006015585, y: -0.00009175128, z: 0.0009656706}
+      rotation: {x: -0.00075109646, y: 0.022153983, z: 0.03387495, w: 0.99918026}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint13
+      parentName: Speed_Runner_base_Rig_4_25:Left_joint12
+      position: {x: 0.005620852, y: -0.00022167436, z: 0.0008405572}
+      rotation: {x: -0.03785105, y: 0.99817973, z: 0.0017791332, w: 0.04691788}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000002}
+    - name: Speed_Runner_base_Rig_4_25:RightMiddleFinger
+      parentName: Speed_Runner_base_Rig_4_25:Right_Hand
+      position: {x: -0.007822587, y: 0.0018419999, z: 0.0009284178}
+      rotation: {x: -0.9924039, y: 0.12251854, z: -0.0062971613, w: -0.009163453}
+      scale: {x: 0.99999994, y: 1.0000002, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:LeftMiddleKnuckle1
+      parentName: Speed_Runner_base_Rig_4_25:RightMiddleFinger
+      position: {x: -0.019132836, y: 0.003012, z: -0.0012636016}
+      rotation: {x: -0.0052267076, y: -0.07694197, z: -0.08444539, w: 0.9934393}
+      scale: {x: 1, y: 0.9999996, z: 0.99999946}
+    - name: Speed_Runner_base_Rig_4_25:Left__joint3
+      parentName: Speed_Runner_base_Rig_4_25:LeftMiddleKnuckle1
+      position: {x: -0.0085074175, y: -0.00043804373, z: 0.0012904748}
+      rotation: {x: -0.0050922525, y: 0.10124962, z: 0.00079829176, w: 0.9948478}
+      scale: {x: 0.9999996, y: 0.99999994, z: 1.0000001}
+    - name: Speed_Runner_base_Rig_4_25:Left_joint14
+      parentName: Speed_Runner_base_Rig_4_25:Left__joint3
+      position: {x: -0.0074121086, y: -0.00036535642, z: -0.0009409437}
+      rotation: {x: -0, y: -0, z: -9.679753e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Left_Hip
+      parentName: Speed_Runner_base_Rig_4_25:Root
+      position: {x: -0.024292542, y: -0.013240049, z: 0.0000000013945657}
+      rotation: {x: 0.0019961311, y: 8.6736174e-19, z: 4.440892e-16, w: 0.99999803}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Left_Knee
+      parentName: Speed_Runner_base_Rig_4_25:Left_Hip
+      position: {x: 0.00526997, y: -0.06850864, z: -0.0000005367787}
+      rotation: {x: 0.000000035157427, y: 7.450187e-10, z: 0.000000004362635, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Left_Ankle
+      parentName: Speed_Runner_base_Rig_4_25:Left_Knee
+      position: {x: 0.000000054742696, y: -0.06265451, z: -0.0012318279}
+      rotation: {x: -0.008631402, y: -0.0000000016235714, z: -0.0000000029179472, w: 0.9999628}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000002}
+    - name: Speed_Runner_base_Rig_4_25:Left_Toe
+      parentName: Speed_Runner_base_Rig_4_25:Left_Ankle
+      position: {x: 7.970111e-18, y: -0.0034482758, z: 0.01724138}
+      rotation: {x: 0.00068024074, y: 9.185832e-10, z: -7.1608713e-10, w: 0.99999976}
+      scale: {x: 0.9999999, y: 1.0000002, z: 1.0000001}
+    - name: Speed_Runner_base_Rig_4_25:Right_Hip
+      parentName: Speed_Runner_base_Rig_4_25:Root
+      position: {x: 0.024438348, y: -0.013239596, z: 9.897103e-11}
+      rotation: {x: 0.0020270515, y: 2.9497487e-12, z: 0.0000000014551887, w: 0.999998}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Speed_Runner_base_Rig_4_25:Right_Knee
+      parentName: Speed_Runner_base_Rig_4_25:Right_Hip
+      position: {x: -0.0052689547, y: -0.068509296, z: 0.0000029092537}
+      rotation: {x: -0.000000023283064, y: -0.0000000014463304, z: 0.000000002188669, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Speed_Runner_base_Rig_4_25:Right_Ankle
+      parentName: Speed_Runner_base_Rig_4_25:Right_Knee
+      position: {x: 0.00000006330445, y: -0.06265445, z: -0.0012314719}
+      rotation: {x: 0.00000003632158, y: 0.000000001446146, z: -0.0000000022341433, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 1.0000001}
+    - name: Speed_Runner_base_Rig_4_25:Right_Toe
+      parentName: Speed_Runner_base_Rig_4_25:Right_Ankle
+      position: {x: -6.2458286e-18, y: -0.00344828, z: 0.01724143}
+      rotation: {x: -0.04515446, y: -5.6075145e-12, z: 1.3630891e-10, w: 0.99898005}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -93,13 +429,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
