@@ -1,30 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-
     GameManager gm;
-    GameObject center;
+    public OnDeath theThing;
 
-    // Start is called before the first frame update
+    // Upon existing, find the Game Manager. Things won't work without it.
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
-
-    public void BeenHit(RaycastHit hit, bool AccuracyEnabled)
-    {
-        hit.transform.LookAt(center.transform);
-
-        Vector2 dist = new Vector2(0, 0);
-    }
-
+    
     public void BeenHit()
-    //  This overload assumes accuracy doesn't matter, and therefore we don't care how far away it was from the center.
+    //  When we've been shot, tell the GameManager and deactivate ourselves.
+    //  If time allows, disable the collider first, add an animation for being hit, THEN deactivate. If we do this, probably reenable the collider right as we deactivate.
     {
+        theThing.makeSound();
         gm.TargetDie();
         gameObject.SetActive(false);
     }

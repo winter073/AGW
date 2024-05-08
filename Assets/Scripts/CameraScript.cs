@@ -16,12 +16,20 @@ public class CameraScript : MonoBehaviour
 
     float rotateX, rotateY;
     bool ADSActive = false;
-    
+
+    [Header("Audio")]
+    [SerializeField] AudioClip RunMusic;
+    [SerializeField] AudioClip NotRunMusic;
+    AudioSource Aud;
+
     void Start()
     {
         // Hide your cursor and center it so everything doesn't break. Standard thing.
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Aud = GetComponent<AudioSource>();
+        Aud.clip = NotRunMusic;
+        Aud.Play();
     }
 
     // Update is called once per frame, which is a good thing for this, makes it smoother.
@@ -52,5 +60,11 @@ public class CameraScript : MonoBehaviour
     public void SetADS(bool Jimmy)
     {
         ADSActive = Jimmy;
+    }
+
+    public void SetAudio(bool james)
+    {
+        Aud.clip = (james ? RunMusic : NotRunMusic);
+        Aud.Play();
     }
 }
