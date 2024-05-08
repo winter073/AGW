@@ -49,7 +49,6 @@ public class PlayerMove : MonoBehaviour
         if (Physics.Raycast(GroundRCP.transform.position, GroundRCP.transform.TransformDirection(Vector3.down), out groundCheck, Mathf.Infinity))
         {
             isGrounded = groundCheck.distance < 0.3f ? true : false;
-            anim.SetBool("Jumping", false);
         }
 
         // If aiming down sights, adjust the camera as such.
@@ -112,6 +111,7 @@ public class PlayerMove : MonoBehaviour
         {
             rb.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
             isGrounded = false;
+            anim.SetTrigger("Jumping");
         }
 
         // always look "forward" since this is a TPS.
