@@ -10,7 +10,7 @@ public class Footsteps : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInParent<Rigidbody>();
         PM = GetComponent<PlayerMove>();
         footies.SetActive(false);
     }

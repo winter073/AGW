@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
 
 
     // I should probably start adding some stuff like RigidBody components and animators. Those will go here.
-    Rigidbody rb;
+    public Rigidbody rb;
     public bool isGrounded = true;
     public bool RocketJumping = false;
     public GameObject GroundRCP;
@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update, and connects to our camera object.
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        
         // For this to work, the Camera needs the Main Camera tag in the editor.
         cam = Camera.main.GetComponent<CameraScript>();
     }
