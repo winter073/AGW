@@ -62,10 +62,8 @@ public class PlayerFire : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Target"))
                 {
-                    Debug.Log("Thing hit is a target.");
                     hit.collider.gameObject.GetComponent<Target>().BeenHit();
                 }
-                Debug.Log("Thing hit at: " + hit.point);
             }
         }
          if (tempAlt > 0 && ShotgunTimer >= ShotgunCooldown)

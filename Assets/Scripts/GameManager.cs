@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         if (SentState != RunState && SentState == false)
         {
             CS.SetAudio(false);
+            CS.RunEnds();
             RunState = false;
             // runtime is our time without adjusting for the missed targets
             string runtime = GetFormattedTime(ts);

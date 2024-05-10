@@ -20,6 +20,7 @@ public class CameraScript : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip RunMusic;
     [SerializeField] AudioClip NotRunMusic;
+    [SerializeField] AudioClip RunEndSFX;
     AudioSource Aud;
 
     void Start()
@@ -66,5 +67,9 @@ public class CameraScript : MonoBehaviour
     {
         Aud.clip = (james ? RunMusic : NotRunMusic);
         Aud.Play();
+    }
+    public void RunEnds()
+    {
+        Aud.PlayOneShot(RunEndSFX);
     }
 }

@@ -626,6 +626,7 @@ MonoBehaviour:
   mouseMax: 90
   RunMusic: {fileID: 8300000, guid: 03263b667305c014eb71dd8a99a55ae2, type: 3}
   NotRunMusic: {fileID: 8300000, guid: 3441b01cbb011264c9cdb52129cd0be4, type: 3}
+  RunEndSFX: {fileID: 8300000, guid: edafedde27da4f24498959bc59a2ba64, type: 3}
 --- !u!82 &5878319409549877281
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1485,7 +1486,7 @@ MonoBehaviour:
   ShotgunCooldown: 5
   ShotgunForce: 20
   GunCooldown: 0.15
-  gunSound: {fileID: 8300000, guid: 05b9c351f5463284bbdb69f46b33f73a, type: 3}
+  gunSound: {fileID: 8300000, guid: ed462d4ddb71d9c41b134d154b114150, type: 3}
   ShotSound: {fileID: 8300000, guid: f6dd235691b2d494aad8a3a6ac013e80, type: 3}
 --- !u!82 &746719527837856890
 AudioSource:
@@ -1499,7 +1500,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.099
+  m_Volume: 0.163
   m_Pitch: 1
   Loop: 0
   Mute: 0
