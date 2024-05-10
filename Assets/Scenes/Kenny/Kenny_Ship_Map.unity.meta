@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Kenny/Kenny_Ship_Map.unity.meta
 guid: bd117f996ad04d24d9ea6820651f567e
+========
+guid: 7b3d6e24f2b59874daf79c7fdab1de2b
+>>>>>>>> Nate-Stuff:Assets/Scenes/Kenny/Ship_Map.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

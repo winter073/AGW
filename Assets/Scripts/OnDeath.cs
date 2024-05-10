@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnDeath : MonoBehaviour
 {
     AudioSource AS;
+    public AudioClip[] sounds; 
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class OnDeath : MonoBehaviour
     
     public void makeSound()
     {
+        AS.clip = sounds[Random.Range(0, sounds.Length)];
         AS.Play();
     }
 }
