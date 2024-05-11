@@ -16,7 +16,7 @@ public class CameraScript : MonoBehaviour
 
     float rotateX, rotateY;
     bool ADSActive = false;
-
+    [SerializeField] PauseMenu PM;
     [Header("Audio")]
     [SerializeField] AudioClip RunMusic;
     [SerializeField] AudioClip NotRunMusic;
@@ -37,18 +37,21 @@ public class CameraScript : MonoBehaviour
     // If this was something else we might want FixedUpdate (and probably could but I don't mind).
     void Update()
     {
-        // We clamp the Vertical mouse so we aren't looking straight up or straight down.
-        // Can edit the exact values in the Editor.
-        rotateX +=Input.GetAxis("Mouse Y") * mouseSpeed;
-        rotateX = Mathf.Clamp(rotateX, mouseMin, mouseMax);
-        rotateY += Input.GetAxis("Mouse X") * mouseSpeed;
+        if (!PM.isPaused)
+        {
+            // We clamp the Vertical mouse so we aren't looking straight up or straight down.
+            // Can edit the exact values in the Editor.
+            rotateX += Input.GetAxis("Mouse Y") * mouseSpeed;
+            rotateX = Mathf.Clamp(rotateX, mouseMin, mouseMax);
+            rotateY += Input.GetAxis("Mouse X") * mouseSpeed;
 
-        // Quaternions suck, send tweet.
-        var targetRotation = Quaternion.Euler(-rotateX, rotateY, 0);
+            // Quaternions suck, send tweet.
+            var targetRotation = Quaternion.Euler(-rotateX, rotateY, 0);
 
-        // Ternary operator to determine if we should zoom in a bit for  ADS.
-        transform.position =  Player.position - targetRotation * (ADSActive ? ADSOffset : cameraOffset);
-        transform.rotation = targetRotation;
+            // Ternary operator to determine if we should zoom in a bit for  ADS.
+            transform.position = Player.position - targetRotation * (ADSActive ? ADSOffset : cameraOffset);
+            transform.rotation = targetRotation;
+        }
     }
 
     // A public function to get the camera's RELEVANT rotation information for movement. I'm told there's something called a property in C# that I could try using but this works fine for now.

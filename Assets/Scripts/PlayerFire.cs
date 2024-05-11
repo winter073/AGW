@@ -35,7 +35,7 @@ public class PlayerFire : MonoBehaviour
         ShotgunTimer = ShotgunCooldown;
         cam = Camera.main.GetComponent<CameraScript>();
         recharge = GameObject.Find("Slider").GetComponent<Slider>();
-        rechargeImage = GameObject.Find("Slider/Fill Area/Fill").GetComponent<Image>();
+        rechargeImage = GameObject.Find("Fill").GetComponent<Image>();
     }
 
     // Update is called once per frame
